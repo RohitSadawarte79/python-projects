@@ -58,28 +58,20 @@ def login(username , entered_password):
         sys.exit()
 
 
-def view():
-    pass
+def view_websites():
+    try:
+        with open('password.json', 'r') as data:
+            view = json.load(data)
 
-def add():
-    pass
+            print("\nWebsites you saved...\n")
 
-def main():
-    while True:
-        user_choice = input("Now you have entered the password manager what you like to do view passwords or set password.(/view, /add, /q (quit) )")
-
-        if user_choice == '/q':
-            print("Quiting...")
-            break
-
-        if user_choice == "/view":
-            view()
-
-        elif user_choice == "/add":
-            add()
-
-        else:
-            print("You have typed wrong command, commands (/view , /add, /q)")
+            for x in view:
+                print(x['website'])
+            print('\n')
+    
+    except FileNotFoundError:
+        print("\n[-] You have not saved any passwords!\n")
+    
 
 
     
