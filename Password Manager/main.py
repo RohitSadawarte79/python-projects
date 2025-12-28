@@ -60,18 +60,19 @@ def login(username , entered_password):
 
 def view_websites():
     try:
-        with open('password.json', 'r') as data:
-            view = json.load(data)
+        with open('password.json', 'r') as data: #open the file named password.json with read as data and store it in the view variable
+            view = json.load(data)                #it will be an dictionary with dictinaries with {website: "websitename", password: "websitepass"} structure
 
-            print("\nWebsites you saved...\n")
+            print("\nWebsites you saved...\n") 
 
-            for x in view:
+            for x in view:                        #loop to print the website names
                 print(x['website'])
             print('\n')
     
     except FileNotFoundError:
         print("\n[-] You have not saved any passwords!\n")
-    
+
+
 
 
     
