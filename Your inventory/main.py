@@ -34,7 +34,7 @@ class Inventory:
         item_name = item_name.lower()
         if item_name in self.database :
             quantity = self.database[item_name]["quantity"]
-            price = self.database[item_name]["price"]
+            price = self.database[item_name]["price"] / quantity
             if quantity < item_quantity:
                 print(f"You only have {quantity} in stock. can't remove {item_quantity} from stock.")
                 return 
