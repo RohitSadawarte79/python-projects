@@ -6,7 +6,7 @@ Master_password = input("Set the master password to open password manager")
 def hash_password(password):
     sha256 = hashlib.sha256()
     sha256.update(password.encode())
-    return sha256.hexdigest()
+    return sha256.hexdigest() # converting the password into cryptographic diget fixed size 256 bit
 
 # Generate a secret key
 def generate_key():
@@ -72,6 +72,21 @@ def view_websites():
     except FileNotFoundError:
         print("\n[-] You have not saved any passwords!\n")
 
+
+key_filename = 'encryption_key.key'
+
+if os.path.exists(key_filename):
+    with open(key_filename, 'rb') as key_file:
+        key = key_file.read()
+
+else:
+    key = generate_key()
+    with open(key_filename, 'wb') as key_file:
+        key_file.write(key)
+
+
+
+cipher = initialize_cipher(key)
 
 
 
